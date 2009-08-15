@@ -24,7 +24,10 @@
  * push move the small switch on the KERNEL board from NAND to NOR before powering
  * up the device.
  */
-
+/*
+ * 20090914 - Bob Hirsch - Added address command line argument.
+ *                syntax: s3c2410_boot_usb <path_to_target_binary> [load_address]
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -171,8 +174,11 @@ static int qt2410_send_file(u_int32_t addr, void *data, u_int32_t len)
 }
 #endif
 
-//#define KERNEL_RAM_BASE	0x30008000
-#define KERNEL_RAM_BASE	0x33F80000
+//#define KERNEL_RAM_BASE		0x30008000
+#define KERNEL_RAM_BASE		0x33F80000 
+
+#define RAM_START 		0x30000000U
+#define RAM_END   		0x34000000U
 
 int main(int argc, char **argv)
 {
@@ -181,6 +187,7 @@ int main(int argc, char **argv)
 	struct stat st;
 	int fd;
 	u_int32_t word = 0x7c7c7c7c;
+	u_int32_t address;
 
 	usb_init();
 	if (!usb_find_busses())
@@ -211,6 +218,17 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
+	if (3 <= argc){
+		address = strtoul(argv[2], NULL, 16);
+		if ((RAM_START > address) || (RAM_END < address)){
+			printf("Invalid address (0x%08X).  Address must be within the range of 0x%08X and 0x%08X\n", 
+				address, RAM_START, RAM_END);
+			exit(3);
+		}
+	}else{
+		address = KERNEL_RAM_BASE;
+	}      
+
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		exit(2);
@@ -225,7 +243,7 @@ int main(int argc, char **argv)
 	if (!prog)
 		exit(1);
 
-	if (qt2410_send_file(KERNEL_RAM_BASE, prog, st.st_size)) {
+	if (qt2410_send_file(address, prog, st.st_size)) {
 		printf("Error downloading program\n");
 		exit(1);
 	}

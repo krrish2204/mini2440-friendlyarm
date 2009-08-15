@@ -1,0 +1,15 @@
+#s3c2410_boot_usb howto for mini2440
+
+= Overview =
+
+-
+
+
+= Building =
+
+-
+
+
+= Usage =
+
+-

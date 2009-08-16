@@ -1,0 +1,3 @@
+#summary Describes the linux development environment needed to work with the mini2440
+
+=heading 1=

@@ -1,4 +1,4 @@
-#s3c2410_boot_usb howto for mini2440
+#summary s3c2410_boot_usb howto for mini2440
 
 = Overview =
 

@@ -1,4 +1,5 @@
 #summary Matt's Diabolically Complicated Mini2440 Development Setup
+#labels pimp
 
 <wiki:toc max_depth="2" />
 

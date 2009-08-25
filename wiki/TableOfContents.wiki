@@ -1,34 +1,33 @@
 <br>
 <br>
-
-* [DevelopmentEnvironment]
-  * [OpenEmbedded]
-  * [tftp]
-  * [nfs]
-* [Mini2440]
-  * Software
-  * Hardware
-    * [Schematics]
-  * Debugging
-* Tools
-  * Windows
-    * DNW
-  * Linux
-    * [s3c2410_boot_usb]
-* Documentation
-  * How-Tos
-  * Manuals
-  * Subversion
-* Users
-  * Bob
-  * Chris
-  * Matt (a.k.a. Pimp)
-  * Sam
-* References
-  * Books
-  * Links
-  * Projects
-* Help
-  * Wiki Notes
-* [http://code.google.com/p/mini2440-friendlyarm/w/list List & Search Wiki Pages]
-* [http://code.google.com/p/mini2440-friendlyarm/w/edit New Wiki Page]
+  * [DevelopmentEnvironment]
+    * [OpenEmbedded]
+    * [tftp]
+    * [nfs]
+  * [Mini2440]
+    * Software
+    * Hardware
+      * [Schematics]
+    * Debugging
+  * Tools
+    * Windows
+      * DNW
+    * Linux
+      * [s3c2410_boot_usb]
+  * Documentation
+    * How-Tos
+    * Manuals
+    * Subversion
+  * Users
+    * Bob
+    * Chris
+    * Matt (a.k.a. Pimp)
+    * Sam
+  * References
+    * Books
+    * Links
+    * Projects
+  * Help
+    * Wiki Notes
+  * [http://code.google.com/p/mini2440-friendlyarm/w/list List & Search Wiki Pages]
+  * [http://code.google.com/p/mini2440-friendlyarm/w/edit New Wiki Page]

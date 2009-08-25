@@ -29,6 +29,6 @@
     * Projects
   * Help
     * Wiki Notes
-  * [TableOfcontents Table of Contents]
+  * [TableOfContents Table of Contents]
   * [http://code.google.com/p/mini2440-friendlyarm/w/list List & Search Wiki Pages]
   * [http://code.google.com/p/mini2440-friendlyarm/w/edit New Wiki Page]

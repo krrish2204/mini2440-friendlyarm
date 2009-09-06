@@ -14,18 +14,22 @@ The mini2440 provides a serial port for console output. As such, a terminal emul
 
 = Terminal Emulators =
 
-While Windows has polished programs like Hyperterm and Teraterm for terminal emulation, linux terminal emulation is typically done from the command line (terminal). For a detailed explanation review [http://books.google.com/books?id=xnFdWfJAK9wC&lpg=PA150&ots=GESIO5ZZ3Y&dq=cu%20terminal%20emulator&pg=PA150#v=onepage&q=terminal%20emulators&f=false Google Books: Building Embedded Systems > Terminal Emulators]
+While Windows has polished programs like Hyperterm and Teraterm for terminal emulation, linux terminal emulation is typically done from the command line (terminal).
 
 As such, several different options exist for terminal emulators in a linux environment: 
   * [http://freshmeat.net/projects/minicom/ Minicom]
-  * [http://freshmeat.net/projects/picocom/ Picocom]
+  * [http://code.google.com/p/picocom/ Picocom]
   * [http://www.airs.com/ian/uucp.html UUCP]
+
+For a detailed explanation please review [http://books.google.com/books?id=xnFdWfJAK9wC&lpg=PA150&ots=GESIO5ZZ3Y&dq=cu%20terminal%20emulator&pg=PA150#v=onepage&q=terminal%20emulators&f=false Google Books: Building Embedded Systems > Terminal Emulators]
+
+= Picocom =
 
 As done [http://code.google.com/p/mini2440/wiki/MiniBringup here], the Picocom terminal emulator will be used.
 
 == Installing Picocom ==
 
-While you can build Picocom from source it is recommended that you install it from your linux distributions package manager (e.g. Yum, Apt, etc.).
+While you can build Picocom from [http://picocom.googlecode.com/files/picocom-1.4.tar.gz source] it is recommended that you install it from your linux distributions package manager (e.g. Yum, Apt, etc.).
   * sudo yum install picocom
   * sudo apt-get install picocom
   * sudo emerge picocom
@@ -58,7 +62,7 @@ All the commands for Picocom can be viewed via 'man picocom'. However, some comm
           behavior implemented in v1.4. Previously picocom used to ignore  the
           escape-character when it was entered as a function character.
 }}}
-*Exit {{{<ctrl-x>}}}:*
+*Exit {{{<ctrl-a><ctrl-x>}}}:*
 {{{
           Exit  the  program: if the "--noreset" option was not given then the
           serial port is reset to its original settings before exiting; if  it
@@ -66,7 +70,7 @@ All the commands for Picocom can be viewed via 'man picocom'. However, some comm
 }}}
 *NOTE:*It is important to exit the terminal session every time it is opened from Picocom. Failure to do so can lock the /dev/ttyS0 device. Sometimes it can be challenging to unlock.
 
-*Send File {{{<ctrl-s}}}:*
+*Send File {{{<ctrl-a><ctrl-s>}}}:*
 {{{
           Send (upload) a file using modem protocol specified during session creation (e.g. xmodem or zmodem) 
 }}}
@@ -77,10 +81,8 @@ All the commands for Picocom can be viewed via 'man picocom'. However, some comm
 
 
 
-== 
-
-
-However, as a matter of convenience, the above command can be put into a bash script and saved somewhere convenient (e.g. /home/user/bin).
+== Customization (OPTIONAL) ==
+As a matter of convenience, the picocom session command can be put into a bash script and saved somewhere convenient (e.g. /home/user/bin).
 
 To do this, open a text editor such as gedit or vim and type the following:
 {{{

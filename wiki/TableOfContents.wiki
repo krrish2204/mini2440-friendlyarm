@@ -17,6 +17,7 @@
       * [s3c2410_boot_usb]
   * Documentation
     * How-Tos
+      * [SerialConsoleSetup]
     * Manuals
     * Subversion
   * Users

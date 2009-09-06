@@ -29,12 +29,14 @@ As done [http://code.google.com/p/mini2440/wiki/MiniBringup here], the Picocom t
 
 == Installing Picocom ==
 
-While you can build Picocom from [http://picocom.googlecode.com/files/picocom-1.4.tar.gz source] it is recommended that you install it from your linux distributions package manager (e.g. Yum, Apt, etc.).
+While you can build Picocom from [http://picocom.googlecode.com/files/picocom-1.4.tar.gz source] it is recommended that you install it from your linux distributions package manager (e.g. Yum, Apt, etc.). From a terminal type one of the following commands corresponding with your particular system:
   * sudo yum install picocom
   * sudo apt-get install picocom
   * sudo emerge picocom
 
 If you are not on the sudoers list and get a nasty message go [http://www.pendrivelinux.com/how-to-add-a-user-to-the-sudoers-list/ here] and try again or become root via 'su'.
+
+Alternatively, you may also use the GUI package management front-ends (e.g. synaptic for apt-get or yumex for yum) if the command-line is too scary. Just search for the 'picocom' package.
 
 == Using Picocom ==
 

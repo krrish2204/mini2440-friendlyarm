@@ -1,0 +1,80 @@
+#RS-232 Serial Communication Setup
+
+= Introduction =
+
+The mini2440 provides a serial port for console output. As such, a terminal emulator is required to communicate with the board.
+
+*Serial Port Configuration 115k (8/N/1)*
+  * BAUD-Rate: 115 kbps
+  * Flow-Control: None
+  * Parity: None
+  * Size: 8 bits
+
+== Terminal Emulators ==
+
+While Windows has polished programs like Hyperterm and Teraterm for terminal emulation, linux terminal emulation is typically done from the command line (terminal). 
+
+As such, several different options exist for terminal emulators in a linux environment: 
+  * [http://freshmeat.net/projects/minicom/ Minicom]
+  * [http://freshmeat.net/projects/picocom/ Picocom]
+  * [http://www.airs.com/ian/uucp.html UUCP]
+
+As done [http://code.google.com/p/mini2440/wiki/MiniBringup here], the Picocom terminal emulator will be used.
+
+=== Installing Picocom ===
+
+While you can build Picocom from source it is recommended that you install it from your linux distributions package manager (e.g. Yum, Apt, etc.).
+  * sudo yum install picocom
+  * sudo apt-get install picocom
+  * sudo emerge picocom
+
+If you are not on the sudoers list and get a nasty message go [http://www.pendrivelinux.com/how-to-add-a-user-to-the-sudoers-list/ here] and try again or become root via 'su'.
+
+
+=== Using Picocom ===
+
+The first serial port on a PC (COM1) is typically assigned to /dev/ttyS0. Similarly, when using a USB-to-Serial adapter the port is typically at /dev/ttyUSB0.
+
+To connect to the mini2440 via COM1:
+
+{{{
+someone@something ~ $ sudo picocom -b 115200 /dev/ttyS0 --send-cmd "sx -vv"
+}}}
+
+Note: It *may not* be necessary to execute the above with elevated privileges depending on your platform. 
+
+As a matter of convenience, the above command can be put into a bash script and saved somewhere convenient (e.g. /home/user/bin).
+
+To do this, open a text editor such as gedit or vim and type the following:
+{{{
+#!/bin/bash
+exec su -c 'picocom -b 115200 /dev/ttyS0 --send-cmd "sx -vv"'
+}}}
+
+Save the file as 'miniconsole' to '/home/$USER/bin' where $USER is your user name. By default the file will not be executable. As such, do the following:
+{{{
+someone@something ~ $ cd /home/someone/bin
+someone@something ~/bin $ chmod +x miniconsole
+}}}
+
+The above can be verified by doing:
+{{{
+someone@something ~ $ ls -l `which miniconsole`
+-rwxr-xr-x 1 someone users 75 2009-09-06 12:40 /home/someone/bin/miniconsole
+}}}
+If miniconsole is not found then its location isn't in your $PATH. To temporarily fix this the directory can be appended to your $PATH via:
+{{{
+someone@something ~ $ export PATH=$PATH:/home/someone/bin
+}}}
+However, an entry should be put in your .bashrc file to ensure that the directory is always added to your $PATH when you login. Go [http://tldp.org/LDP/abs/html/sample-bashrc.html here] for more information regarding the .bashrc file.
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+[http://books.google.com/books?id=xnFdWfJAK9wC&lpg=PA150&ots=GESIO5ZZ3Y&dq=cu%20terminal%20emulator&pg=PA150#v=onepage&q=terminal%20emulators&f=false Google Books: Building Embedded Systems > Terminal Emulators]

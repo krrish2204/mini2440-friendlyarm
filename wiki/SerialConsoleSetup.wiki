@@ -1,4 +1,6 @@
-#RS-232 Serial Communication Setup
+#summary RS-232 Serial Communication Setup (Picocom)
+
+<wiki:toc max_depth="2" />
 
 = Introduction =
 
@@ -10,9 +12,9 @@ The mini2440 provides a serial port for console output. As such, a terminal emul
   * Parity: None
   * Size: 8 bits
 
-== Terminal Emulators ==
+= Terminal Emulators =
 
-While Windows has polished programs like Hyperterm and Teraterm for terminal emulation, linux terminal emulation is typically done from the command line (terminal). 
+While Windows has polished programs like Hyperterm and Teraterm for terminal emulation, linux terminal emulation is typically done from the command line (terminal). For a detailed explanation review [http://books.google.com/books?id=xnFdWfJAK9wC&lpg=PA150&ots=GESIO5ZZ3Y&dq=cu%20terminal%20emulator&pg=PA150#v=onepage&q=terminal%20emulators&f=false Google Books: Building Embedded Systems > Terminal Emulators]
 
 As such, several different options exist for terminal emulators in a linux environment: 
   * [http://freshmeat.net/projects/minicom/ Minicom]
@@ -21,7 +23,7 @@ As such, several different options exist for terminal emulators in a linux envir
 
 As done [http://code.google.com/p/mini2440/wiki/MiniBringup here], the Picocom terminal emulator will be used.
 
-=== Installing Picocom ===
+== Installing Picocom ==
 
 While you can build Picocom from source it is recommended that you install it from your linux distributions package manager (e.g. Yum, Apt, etc.).
   * sudo yum install picocom
@@ -30,8 +32,7 @@ While you can build Picocom from source it is recommended that you install it fr
 
 If you are not on the sudoers list and get a nasty message go [http://www.pendrivelinux.com/how-to-add-a-user-to-the-sudoers-list/ here] and try again or become root via 'su'.
 
-
-=== Using Picocom ===
+== Using Picocom ==
 
 The first serial port on a PC (COM1) is typically assigned to /dev/ttyS0. Similarly, when using a USB-to-Serial adapter the port is typically at /dev/ttyUSB0.
 
@@ -41,9 +42,45 @@ To connect to the mini2440 via COM1:
 someone@something ~ $ sudo picocom -b 115200 /dev/ttyS0 --send-cmd "sx -vv"
 }}}
 
+
 Note: It *may not* be necessary to execute the above with elevated privileges depending on your platform. 
 
-As a matter of convenience, the above command can be put into a bash script and saved somewhere convenient (e.g. /home/user/bin).
+=== Commands ===
+
+All the commands for Picocom can be viewed via 'man picocom'. However, some common commands are listed:
+
+*Escape Character {{{<ctrl-a>}}}:*
+{{{
+          Send the escape character to the serial port and return  to  "trans‐
+          parent"  mode.  This  means  that if the escape character ("C-a", by
+          default) is typed twice, the program sends the escape  character  to
+          the  serial  port,  and  remains  in transparent mode. This is a new
+          behavior implemented in v1.4. Previously picocom used to ignore  the
+          escape-character when it was entered as a function character.
+}}}
+*Exit {{{<ctrl-x>}}}:*
+{{{
+          Exit  the  program: if the "--noreset" option was not given then the
+          serial port is reset to its original settings before exiting; if  it
+          was given the serial port is not reset.
+}}}
+*NOTE:*It is important to exit the terminal session every time it is opened from Picocom. Failure to do so can lock the /dev/ttyS0 device. Sometimes it can be challenging to unlock.
+
+*Send File {{{<ctrl-s}}}:*
+{{{
+          Send (upload) a file using modem protocol specified during session creation (e.g. xmodem or zmodem) 
+}}}
+
+
+
+
+
+
+
+== 
+
+
+However, as a matter of convenience, the above command can be put into a bash script and saved somewhere convenient (e.g. /home/user/bin).
 
 To do this, open a text editor such as gedit or vim and type the following:
 {{{
@@ -67,14 +104,3 @@ If miniconsole is not found then its location isn't in your $PATH. To temporaril
 someone@something ~ $ export PATH=$PATH:/home/someone/bin
 }}}
 However, an entry should be put in your .bashrc file to ensure that the directory is always added to your $PATH when you login. Go [http://tldp.org/LDP/abs/html/sample-bashrc.html here] for more information regarding the .bashrc file.
-
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
-
-[http://books.google.com/books?id=xnFdWfJAK9wC&lpg=PA150&ots=GESIO5ZZ3Y&dq=cu%20terminal%20emulator&pg=PA150#v=onepage&q=terminal%20emulators&f=false Google Books: Building Embedded Systems > Terminal Emulators]

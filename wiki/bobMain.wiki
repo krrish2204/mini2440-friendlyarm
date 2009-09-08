@@ -1,7 +1,6 @@
+#summary Bob's Main Page
 #labels Bob
-#Bob's Main Page
 
 = Mini2440 Setup =
 
 Mini mounted to a clip board so that I can access the main motherboard.
-

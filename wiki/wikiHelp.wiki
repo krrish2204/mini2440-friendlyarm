@@ -2,7 +2,7 @@
 
 = Adding Images to Wiki Pages =
 
-The following outlines the procedure to add images to wiki pages[http://code.google.com/p/support/wiki/WikiSyntax ^1]
+The following outlines the procedure to add images to wiki pages [http://code.google.com/p/support/wiki/WikiSyntax Reference: Comment by Woody]
 
 {{{
 svn checkout https://mini2440-friendlyarm.googlecode.com/svn/wiki/ mini2440-friendlyarm --username your-username

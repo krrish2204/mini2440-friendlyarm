@@ -3,4 +3,6 @@
 
 = Mini2440 Setup =
 
-Mini mounted to a clip board so that I can access the main motherboard.
+Mini mounted to a clipboard so that I can access the main motherboard.
+
+[http://mini2440-friendlyarm.googlecode.com/files/bobs_mini2440.JPG]

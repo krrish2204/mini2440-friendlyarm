@@ -21,7 +21,7 @@
     * Manuals
     * Subversion
   * Users
-    * Bob
+    * [bobMain Bob]
     * Chris
     * Matt (a.k.a. Pimp)
     * Sam

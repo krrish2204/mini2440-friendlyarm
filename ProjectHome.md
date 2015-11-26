@@ -1,0 +1,1 @@
+A collection of small projects developed for the mini2440 FriendlyARM development board.
